@@ -20,3 +20,12 @@ jobs:
 
       - name: ver variables de entorno
         run: env
+
+  repo-files:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: descargar código del repositorio
+        uses: actions/checkout@v3
+        
+      - name: ver archivos del repositorio
+        run: ls -la
