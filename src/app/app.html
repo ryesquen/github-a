@@ -1,0 +1,41 @@
+<main class="game">
+  <h1>Tres en Raya</h1>
+
+  <section class="scoreboard" aria-label="Puntuación">
+    <div class="score" [class.active]="currentPlayer() === 'X'">
+      <span class="score-value">X</span>
+      <strong>{{ scores().X }}</strong>
+    </div>
+    <div class="score score--draw">
+      <span class="score-value">=</span>
+      <strong>{{ scores().draw }}</strong>
+    </div>
+    <div class="score" [class.active]="currentPlayer() === 'O'">
+      <span class="score-value">O</span>
+      <strong>{{ scores().O }}</strong>
+    </div>
+  </section>
+
+  <p class="status" [attr.data-result]="winner()" role="status">{{ status() }}</p>
+
+  <div class="board">
+    @for (cell of board(); track $index) {
+      <button
+        type="button"
+        class="cell"
+        [class.filled]="cell !== null"
+        [class.winning]="isWinningCell($index)"
+        [disabled]="isFinished() || cell !== null"
+        (click)="makeMove($index)"
+        attr.aria-label="Casilla {{ $index + 1 }}: {{ cell ?? 'vacía' }}"
+      >
+        {{ cell }}
+      </button>
+    }
+  </div>
+
+  <div class="actions">
+    <button type="button" class="btn btn--primary" (click)="reset()">Reiniciar partida</button>
+    <button type="button" class="btn" (click)="resetScores()">Reiniciar marcador</button>
+  </div>
+</main>

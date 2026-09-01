@@ -1,0 +1,19 @@
+name: Hello
+
+on:
+  push:
+    branches:
+      - deve
+
+jobs:
+  hello:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: saludar
+        run: echo "Hello, World!"
+
+      - name: ver archivos disponibles
+        run: ls -la
+
+      - name: despedida
+        run: echo "Goodbye, World!"
