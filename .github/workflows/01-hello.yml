@@ -17,3 +17,6 @@ jobs:
 
       - name: despedida
         run: echo "Goodbye, World!"
+
+      - name: ver variables de entorno
+        run: env
