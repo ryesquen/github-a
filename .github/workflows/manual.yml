@@ -1,0 +1,9 @@
+name: 02 - manual
+on:
+  workflow_dispatch:
+jobs:
+  manual:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: saludar
+        run: echo "Manual!!!"
